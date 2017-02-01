@@ -16,4 +16,19 @@ describe GithubService do
       expect(user_info[:plan]).to be_a(Hash)
     end
   end
+
+  context 'user_repos' do
+    it "returns a list of repos for a given user" do
+      user = OpenStruct.new(
+      name: "cews7",
+      token: ENV['TOKEN']
+      )
+
+      user_repos = GithubService.new(user).user_repos
+
+      expect(user_repos.class).to eq(Array)
+      expect(user_repos.first).to have_key(:name)
+      expect(user_repos.first).to have_key(:description)
+    end
+  end
 end
