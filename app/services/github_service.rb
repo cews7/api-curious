@@ -13,6 +13,10 @@ class GithubService
     json_parse(conn.get '/user')
   end
 
+  def user_repos
+    json_parse(conn.get '/')
+  end
+
   def json_parse(user_info)
     JSON.parse(user_info.body, symbolize_names: true)
   end
