@@ -48,4 +48,20 @@ describe GithubService do
       expect(user_followers.first).to have_key(:site_admin)
     end
   end
+
+  context 'user_events' do
+    it 'returns events for a given user' do
+      user = OpenStruct.new(
+      name: "cews7",
+      token: ENV['TOKEN']
+      )
+
+      user_events = GithubService.new(user).user_events
+      # binding.pry
+      expect(user_events.class).to eq(Array)
+      expect(user_events.first).to be_a(Hash)
+      expect(user_events.first).to have_key(:type)
+      expect(user_events.first).to have_key(:repo)
+    end
+  end
 end
