@@ -17,6 +17,10 @@ class GithubService
     json_parse(conn.get '/user/repos?sort=created')
   end
 
+  def user_followers
+    json_parse(conn.get "/users/#{user_name}/followers")
+  end
+
   def json_parse(user_info)
     JSON.parse(user_info.body, symbolize_names: true)
   end
