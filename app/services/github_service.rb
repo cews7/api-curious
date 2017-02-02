@@ -21,6 +21,10 @@ class GithubService
     json_parse(conn.get "/users/#{user_name}/followers")
   end
 
+  def user_events
+    json_parse(conn.get "/users/#{user_name}/events/public")
+  end
+
   def json_parse(user_info)
     JSON.parse(user_info.body, symbolize_names: true)
   end
