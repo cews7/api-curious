@@ -14,7 +14,7 @@ class GithubService
   end
 
   def user_repos
-    json_parse(conn.get '/')
+    json_parse(conn.get '/user/repos?sort=created')
   end
 
   def json_parse(user_info)
