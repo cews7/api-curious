@@ -43,6 +43,7 @@ describe GithubService do
 
       expect(user_followers.class).to eq(Array)
       expect(user_followers.first).to be_a(Hash)
+      expect(user_followers.count).to eq 2
       expect(user_followers.first).to have_key(:login)
       expect(user_followers.first).to have_key(:site_admin)
     end
