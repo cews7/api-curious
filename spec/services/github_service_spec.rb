@@ -18,7 +18,7 @@ describe GithubService do
   end
 
   context 'user_repos' do
-    it "returns a list of repos for a given user" do
+    it 'returns a list of repos for a given user' do
       user = OpenStruct.new(
       name: "cews7",
       token: ENV['TOKEN']
@@ -29,6 +29,22 @@ describe GithubService do
       expect(user_repos.class).to eq(Array)
       expect(user_repos.first).to have_key(:name)
       expect(user_repos.first).to have_key(:description)
+    end
+  end
+
+  context 'user_followers' do
+    it 'returns a list of followers' do
+      user = OpenStruct.new(
+      name: "cews7",
+      token: ENV['TOKEN']
+      )
+
+      user_followers = GithubService.new(user).user_followers
+
+      expect(user_followers.class).to eq(Array)
+      expect(user_followers.first).to be_a(Hash)
+      expect(user_followers.first).to have_key(:login)
+      expect(user_followers.first).to have_key(:site_admin)
     end
   end
 end
