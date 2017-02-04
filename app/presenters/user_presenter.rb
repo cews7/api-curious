@@ -3,19 +3,22 @@ class UserPresenter
     @current_user = current_user
   end
 
-  def repos
-    GithubService.new.user_repos
+  def user_repos
+    GithubService.new.user_repos(current_user)
   end
 
-  def followers
-    GithubService.new.user_followers
+  def user_followers
+    GithubService.new.user_followers(current_user)
   end
 
-  def info
-    GithubService.new.user_info
+  def user_info
+    GithubService.new.user_info(current_user)
   end
 
-  def events
-    GithubService.new.user_events
+  def user_events
+    GithubService.new.user_events(current_user)
   end
+
+  private
+  attr_reader :current_user
 end
