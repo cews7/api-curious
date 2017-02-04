@@ -57,7 +57,7 @@ describe GithubService do
       )
 
       user_events = GithubService.new(user).user_events
-      # binding.pry
+
       expect(user_events.class).to eq(Array)
       expect(user_events.first).to be_a(Hash)
       expect(user_events.first).to have_key(:type)
